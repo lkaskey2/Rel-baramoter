@@ -134,10 +134,8 @@ input:focus{border-color:#58a6ff}
         <input type="checkbox" id="good-priority" onchange="togglePriority()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Priority
       </label>
       <div id="priority-wrap" style="display:none;padding-left:16px;border-left:2px solid #30363d;margin-bottom:10px">
-        <select id="priority-direction" onchange="updateLiveScore()" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#58a6ff;font-family:inherit;font-size:14px;padding:9px 12px;outline:none">
-          <option value="i_made_her">I made her a priority</option>
-          <option value="she_made_me">She made me a priority</option>
-        </select>
+        <label class="fight-opt"><input type="radio" name="priority-direction" id="priority-direction-her" value="i_made_her" checked onchange="updateLiveScore()" style="accent-color:#58a6ff"> I made her a priority</label>
+        <label class="fight-opt"><input type="radio" name="priority-direction" id="priority-direction-me" value="she_made_me" onchange="updateLiveScore()" style="accent-color:#58a6ff"> She made me a priority</label>
       </div>
       <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;margin-bottom:8px">
         <input type="checkbox" id="good-compassion" onchange="toggleCompassion()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Showed compassion/empathy
@@ -326,8 +324,12 @@ input:focus{border-color:#58a6ff}
           <input type="checkbox" id="neg-no-affection-2h" onchange="updateLiveScore()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Spent more than 2 hours together with no physical affection
         </label>
         <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;margin-bottom:8px">
-          <input type="checkbox" id="neg-not-priority" onchange="updateLiveScore()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Didn't feel a priority
+          <input type="checkbox" id="neg-not-priority" onchange="toggleNotPriority()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Didn't feel a priority
         </label>
+        <div id="not-priority-wrap" style="display:none;padding-left:16px;border-left:2px solid #30363d;margin-bottom:10px">
+          <label class="fight-opt"><input type="radio" name="not-priority-reason" id="not-priority-phone" value="phone" checked onchange="updateLiveScore()" style="accent-color:#58a6ff"> On her phone</label>
+          <label class="fight-opt"><input type="radio" name="not-priority-reason" id="not-priority-kids" value="kids" onchange="updateLiveScore()" style="accent-color:#58a6ff"> Kids change our plans</label>
+        </div>
         <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;margin-bottom:8px">
           <input type="checkbox" id="neg-trust-behavior" onchange="toggleTrustBehavior()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Exhibited behaviors that she doesn't trust me
         </label>
@@ -505,7 +507,7 @@ input:focus{border-color:#58a6ff}
         <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Brought up an old fight or issue</span><span style="color:#f85149;font-weight:700">-10</span></div>
         <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Minimized feelings</span><span style="color:#f85149;font-weight:700">-10</span></div>
         <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Spent more than 2 hours together with no physical affection</span><span style="color:#f85149;font-weight:700">-5</span></div>
-        <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Didn't feel a priority</span><span style="color:#f85149;font-weight:700">-10</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Didn't feel a priority (pick one)</span><span style="color:#f85149;font-weight:700">-7 to -10</span></div>
         <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid #21262d"><span>Exhibited behaviors that she doesn't trust me</span><span style="color:#f85149;font-weight:700">-5 to -15</span></div>
         <div style="display:flex;justify-content:space-between;font-size:14px;padding:8px 0"><span>No sex in 10 days (automatic)</span><span style="color:#f85149;font-weight:700">-5 to -15</span></div>
       </div>
@@ -606,10 +608,8 @@ input:focus{border-color:#58a6ff}
         <input type="checkbox" id="e-good-priority" onchange="eTogglePriority()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Priority
       </label>
       <div id="e-priority-wrap" style="display:none;padding-left:16px;border-left:2px solid #30363d;margin-bottom:10px">
-        <select id="e-priority-direction" onchange="updateLiveScore()" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:6px;color:#58a6ff;font-family:inherit;font-size:14px;padding:9px 12px;outline:none">
-          <option value="i_made_her">I made her a priority</option>
-          <option value="she_made_me">She made me a priority</option>
-        </select>
+        <label class="fight-opt"><input type="radio" name="e-priority-direction" id="e-priority-direction-her" value="i_made_her" checked onchange="updateLiveScore()" style="accent-color:#58a6ff"> I made her a priority</label>
+        <label class="fight-opt"><input type="radio" name="e-priority-direction" id="e-priority-direction-me" value="she_made_me" onchange="updateLiveScore()" style="accent-color:#58a6ff"> She made me a priority</label>
       </div>
       <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;margin-bottom:8px">
         <input type="checkbox" id="e-good-compassion" onchange="eToggleCompassion()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Showed compassion/empathy
@@ -696,8 +696,12 @@ input:focus{border-color:#58a6ff}
         <input type="checkbox" id="e-neg-no-affection-2h" onchange="updateLiveScore()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Spent more than 2 hours together with no physical affection
       </label>
       <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;border-bottom:1px solid #21262d;margin-bottom:8px">
-        <input type="checkbox" id="e-neg-not-priority" onchange="updateLiveScore()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Didn't feel a priority
+        <input type="checkbox" id="e-neg-not-priority" onchange="eToggleNotPriority()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Didn't feel a priority
       </label>
+      <div id="e-not-priority-wrap" style="display:none;padding-left:16px;border-left:2px solid #30363d;margin-bottom:10px">
+        <label class="fight-opt"><input type="radio" name="e-not-priority-reason" id="e-not-priority-phone" value="phone" checked onchange="updateLiveScore()" style="accent-color:#58a6ff"> On her phone</label>
+        <label class="fight-opt"><input type="radio" name="e-not-priority-reason" id="e-not-priority-kids" value="kids" onchange="updateLiveScore()" style="accent-color:#58a6ff"> Kids change our plans</label>
+      </div>
       <label style="display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#e6edf3;cursor:pointer;padding:6px 0;border-bottom:1px solid #21262d;margin-bottom:8px">
         <input type="checkbox" id="e-neg-trust-behavior" onchange="eToggleTrustBehavior()" style="accent-color:#58a6ff;width:16px;height:16px;flex-shrink:0"> Exhibited behaviors that she doesn't trust me
       </label>
@@ -904,6 +908,11 @@ function fightPenalty(r) {
   return -20;
 }
 
+function notPriorityPenalty(reason) {
+  var map = { 'phone': 10, 'kids': 7 };
+  return map[reason] || 0;
+}
+
 function trustBehaviorPenalty(count) {
   var map = { '1x': 5, '2x': 7, '3x': 10, '4+x': 15 };
   return map[count] || 0;
@@ -979,6 +988,9 @@ function calcScore(entry) {
   if (entry.trustBehaviorCount) {
     score -= trustBehaviorPenalty(entry.trustBehaviorCount);
   }
+  if (entry.notPriorityReason) {
+    score -= notPriorityPenalty(entry.notPriorityReason);
+  }
   if (entry.priorityDirection) {
     score += 10;
   }
@@ -1002,8 +1014,7 @@ function calcScore(entry) {
     "Questioned me like she doesn't trust me": 10,
     'Brought up an old fight or issue': 10,
     'Minimized feelings': 10,
-    'Spent more than 2 hours together with no physical affection': 5,
-    "Didn't feel a priority": 10
+    'Spent more than 2 hours together with no physical affection': 5
   };
   for (var ni = 0; ni < negT.length; ni++) {
     score -= (negPenaltyMap[negT[ni]] !== undefined ? negPenaltyMap[negT[ni]] : 5);
@@ -1086,6 +1097,7 @@ function saveNight() {
     negThoughts: getNegThoughts(),
     trustBehaviorCount: getTrustBehaviorCount(),
     priorityDirection: getPriorityDirection(),
+    notPriorityReason: getNotPriorityReason(),
     compassionItems: getCompassionItems(),
     lackCompassionItems: getLackCompassionItems(),
     fightData: getFightData() });
@@ -1122,7 +1134,10 @@ function saveNight() {
   resetNegThoughts();
   document.getElementById('good-priority').checked = false;
   document.getElementById('priority-wrap').style.display = 'none';
-  document.getElementById('priority-direction').value = 'i_made_her';
+  document.getElementById('priority-direction-her').checked = true;
+  document.getElementById('neg-not-priority').checked = false;
+  document.getElementById('not-priority-wrap').style.display = 'none';
+  document.getElementById('not-priority-phone').checked = true;
   document.getElementById('good-compassion').checked = false;
   document.getElementById('compassion-wrap').style.display = 'none';
   document.getElementById('compassion-hearing').checked = false;
@@ -1186,6 +1201,7 @@ function openEdit(id) {
   setENegThoughts(e.negThoughts || []);
   setETrustBehaviorCount(e.trustBehaviorCount || null);
   setEPriorityDirection(e.priorityDirection || null);
+  setENotPriorityReason(e.notPriorityReason || null);
   setECompassionItems(e.compassionItems || []);
   setELackCompassionItems(e.lackCompassionItems || []);
   setETrustItems((e.good || []).filter(function(g){ return ['Confided in each other','Able to vent','Sincere apology'].indexOf(g) !== -1; }));
@@ -1202,6 +1218,7 @@ function closeEdit() {
   document.body.style.overflow = ''; editId = null; eNoteId = null;
   resetENegThoughts();
   setEPriorityDirection(null);
+  setENotPriorityReason(null);
   setECompassionItems([]);
   setELackCompassionItems([]);
   setETrustItems([]);
@@ -1225,6 +1242,7 @@ function saveEdit() {
       entries[i].negThoughts = getENegThoughts();
       entries[i].trustBehaviorCount = getETrustBehaviorCount();
       entries[i].priorityDirection = getEPriorityDirection();
+      entries[i].notPriorityReason = getENotPriorityReason();
       entries[i].compassionItems = getECompassionItems();
       entries[i].lackCompassionItems = getELackCompassionItems();
       break;
@@ -1405,6 +1423,7 @@ function renderHistory() {
       (e.negThoughts && e.negThoughts.length ? ' &nbsp;&#128308; ' + e.negThoughts.join(', ') : '') +
       (e.trustBehaviorCount ? ' &nbsp;&#128308; Exhibited behaviors that she doesn\'t trust me (' + e.trustBehaviorCount.replace('4+x','4+ times').replace('1x','1 time').replace('2x','2 times').replace('3x','3 times') + ')' : '') +
       (e.priorityDirection ? ' &nbsp;&#128077; Priority (' + (e.priorityDirection === 'i_made_her' ? 'I made her a priority' : 'She made me a priority') + ')' : '') +
+      (e.notPriorityReason ? ' &nbsp;&#128308; Didn\'t feel a priority (' + (e.notPriorityReason === 'phone' ? 'On her phone' : 'Kids change our plans') + ')' : '') +
       (e.compassionItems && e.compassionItems.length ? ' &nbsp;&#128077; Showed compassion/empathy (' + e.compassionItems.map(function(t){ return t === 'hearing' ? 'Hearing' : t === 'financial' ? 'Financial stress' : 'Job stress'; }).join(', ') + ')' : '') +
       (e.lackCompassionItems && e.lackCompassionItems.length ? ' &nbsp;&#128308; Lack of compassion/empathy (' + e.lackCompassionItems.map(function(t){ return t === 'hearing' ? 'Hearing' : t === 'financial' ? 'Financial stress' : 'Job stress'; }).join(', ') + ')' : '') +
       (e.pleasant ? ' &nbsp;&#10024; Pleasant Surprise'         : '') +
@@ -1772,7 +1791,7 @@ function updateLiveScore() {
     'neg-character':-10,'neg-not-connected':-7,'neg-ex-talk':-7,'neg-escalated-others':-5,
     'neg-find-someone-else':-10,'neg-worried-bored':-7,'neg-giving-more':-7,'neg-felt-alone':-5,
     'neg-sarcastic-public':-10,'neg-accused-women':-10,'neg-old-fight':-10,'neg-minimized-feelings':-10,
-    'neg-no-affection-2h':-5,'neg-not-priority':-10,'neg-questioned-trust':-10
+    'neg-no-affection-2h':-5,'neg-questioned-trust':-10
   };
   Object.keys(negMap).forEach(function(id){
     var el = document.getElementById(id);
@@ -1785,6 +1804,13 @@ function updateLiveScore() {
     var countEl = document.getElementById('trust-behavior-count');
     var countVal = countEl ? countEl.value : '1x';
     score -= trustBehaviorPenalty(countVal);
+  }
+
+  // Didn't feel a priority
+  var notPriEl = document.getElementById('neg-not-priority');
+  if (notPriEl && notPriEl.checked) {
+    var reasonChecked = document.querySelector('input[name="not-priority-reason"]:checked');
+    score -= notPriorityPenalty(reasonChecked ? reasonChecked.value : 'phone');
   }
 
   // Priority
@@ -1847,6 +1873,44 @@ function eToggleTrustBehavior() {
   updateLiveScore();
 }
 
+function toggleNotPriority() {
+  var on = document.getElementById('neg-not-priority').checked;
+  document.getElementById('not-priority-wrap').style.display = on ? 'block' : 'none';
+  updateLiveScore();
+}
+function eToggleNotPriority() {
+  var on = document.getElementById('e-neg-not-priority').checked;
+  document.getElementById('e-not-priority-wrap').style.display = on ? 'block' : 'none';
+  updateLiveScore();
+}
+function getNotPriorityReason() {
+  var el = document.getElementById('neg-not-priority');
+  if (!el || !el.checked) return null;
+  var checked = document.querySelector('input[name="not-priority-reason"]:checked');
+  return checked ? checked.value : 'phone';
+}
+function getENotPriorityReason() {
+  var el = document.getElementById('e-neg-not-priority');
+  if (!el || !el.checked) return null;
+  var checked = document.querySelector('input[name="e-not-priority-reason"]:checked');
+  return checked ? checked.value : 'phone';
+}
+function setENotPriorityReason(val) {
+  var el = document.getElementById('e-neg-not-priority');
+  var wrap = document.getElementById('e-not-priority-wrap');
+  if (val) {
+    if (el) el.checked = true;
+    if (wrap) wrap.style.display = 'block';
+    var radio = document.querySelector('input[name="e-not-priority-reason"][value="' + val + '"]');
+    if (radio) radio.checked = true;
+  } else {
+    if (el) el.checked = false;
+    if (wrap) wrap.style.display = 'none';
+    var phoneRadio = document.getElementById('e-not-priority-phone');
+    if (phoneRadio) phoneRadio.checked = true;
+  }
+}
+
 function togglePriority() {
   var on = document.getElementById('good-priority').checked;
   document.getElementById('priority-wrap').style.display = on ? 'block' : 'none';
@@ -1860,27 +1924,28 @@ function eTogglePriority() {
 function getPriorityDirection() {
   var el = document.getElementById('good-priority');
   if (!el || !el.checked) return null;
-  var d = document.getElementById('priority-direction');
-  return d ? d.value : 'i_made_her';
+  var checked = document.querySelector('input[name="priority-direction"]:checked');
+  return checked ? checked.value : 'i_made_her';
 }
 function getEPriorityDirection() {
   var el = document.getElementById('e-good-priority');
   if (!el || !el.checked) return null;
-  var d = document.getElementById('e-priority-direction');
-  return d ? d.value : 'i_made_her';
+  var checked = document.querySelector('input[name="e-priority-direction"]:checked');
+  return checked ? checked.value : 'i_made_her';
 }
 function setEPriorityDirection(val) {
   var el = document.getElementById('e-good-priority');
   var wrap = document.getElementById('e-priority-wrap');
-  var d = document.getElementById('e-priority-direction');
   if (val) {
     if (el) el.checked = true;
     if (wrap) wrap.style.display = 'block';
-    if (d) d.value = val;
+    var radio = document.querySelector('input[name="e-priority-direction"][value="' + val + '"]');
+    if (radio) radio.checked = true;
   } else {
     if (el) el.checked = false;
     if (wrap) wrap.style.display = 'none';
-    if (d) d.value = 'i_made_her';
+    var herRadio = document.getElementById('e-priority-direction-her');
+    if (herRadio) herRadio.checked = true;
   }
 }
 
@@ -2054,7 +2119,6 @@ function getNegThoughts() {
   if (document.getElementById('neg-old-fight') && document.getElementById('neg-old-fight').checked) arr.push('Brought up an old fight or issue');
   if (document.getElementById('neg-minimized-feelings') && document.getElementById('neg-minimized-feelings').checked) arr.push('Minimized feelings');
   if (document.getElementById('neg-no-affection-2h') && document.getElementById('neg-no-affection-2h').checked) arr.push('Spent more than 2 hours together with no physical affection');
-  if (document.getElementById('neg-not-priority') && document.getElementById('neg-not-priority').checked) arr.push("Didn't feel a priority");
   return arr;
 }
 
@@ -2066,7 +2130,7 @@ function getTrustBehaviorCount() {
 }
 
 function resetNegThoughts() {
-  ['neg-divino','neg-bella','neg-commitment','neg-unfair','neg-time','neg-insecure','neg-no-express','neg-pressured','neg-kids-time','neg-double-standard','neg-character','neg-not-connected','neg-ex-talk','neg-escalated-others','neg-sarcastic-public','neg-accused-women','neg-old-fight','neg-minimized-feelings','neg-no-affection-2h','neg-not-priority','neg-find-someone-else','neg-worried-bored','neg-giving-more','neg-felt-alone','neg-questioned-trust'].forEach(function(id){
+  ['neg-divino','neg-bella','neg-commitment','neg-unfair','neg-time','neg-insecure','neg-no-express','neg-pressured','neg-kids-time','neg-double-standard','neg-character','neg-not-connected','neg-ex-talk','neg-escalated-others','neg-sarcastic-public','neg-accused-women','neg-old-fight','neg-minimized-feelings','neg-no-affection-2h','neg-find-someone-else','neg-worried-bored','neg-giving-more','neg-felt-alone','neg-questioned-trust'].forEach(function(id){
     var el = document.getElementById(id); if(el) el.checked = false;
   });
   var tb = document.getElementById('neg-trust-behavior'); if(tb) tb.checked = false;
@@ -2103,7 +2167,6 @@ var ENEG_IDS = {
   'e-neg-old-fight': 'Brought up an old fight or issue',
   'e-neg-minimized-feelings': 'Minimized feelings',
   'e-neg-no-affection-2h': 'Spent more than 2 hours together with no physical affection',
-  'e-neg-not-priority': "Didn't feel a priority"
 };
 
 function eToggleNegThoughts() {
